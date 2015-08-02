@@ -105,13 +105,14 @@ div[id^="wrapperForPanels"] {
       border-left: 1px solid gray;
       border-right: 1px solid gray; }
       div[id^="wrapperForPanels"] .panel .panel-body .panel-icon {
+        padding: 5px;
         cursor: pointer;
         display: inline-block;
         border: 1px solid darkgray;
         margin: 5px;
         text-align: center;
         background-color: white;
-        height: 300px;
+        min-height: 200px;
         max-width: 300px;
         overflow: hidden;
         -moz-border-radius: 5px;
@@ -137,7 +138,10 @@ div[id^="wrapperForPanels"] {
         div[id^="wrapperForPanels"] .panel .panel-body .panel-icon .choiceDescription {
           margin: 5px;
           color: darkslategray;
-          font-size: 0.8em; }
+          font-size: 0.8em;
+          height: 100px; }
+        div[id^="wrapperForPanels"] .panel .panel-body .panel-icon .choiceDescription:empty {
+          display: none; }
       div[id^="wrapperForPanels"] .panel .panel-body .panel-text {
         background-color: white;
         text-align: left;

@@ -135,7 +135,7 @@ var myApp = (function () {
         
         var window3wingNode=new panelsPlugin.PanelChoicesNode("3 skrzydła", "Kierunek otwierania okna",
              "images/okno/skrzydla/podzial_potrojne.jpg",
-            "okno posiada 3 skrzydła",
+            "okno posiada trzy skrzydła",
             windowDirections3wing_right_right_left,windowDirections3wing_right_empty_left,windowDirections3wing_topRight_right_topLeft);
 
         //first tier
