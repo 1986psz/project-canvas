@@ -169,4 +169,12 @@ div[id^="wrapperForPanels"] {
         width: 100%;
         margin: 0 !important; } }
 
+#floatingListOfChoices {
+  background-color: cornsilk;
+  height: 300px;
+  width: 300px;
+  position: absolute;
+  bottom: 0;
+  right: 0; }
+
 /*# sourceMappingURL=base.css.map */

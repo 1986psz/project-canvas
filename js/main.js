@@ -1,7 +1,7 @@
 var myApp = (function () {	
     var public={};
 
-    public.init = function(){
+    var createPanelsStructure=function(){
         var sections_0_0=new panelsPlugin.PanelCodeNode("Poziomo:0\nPionowo:0", 
             "Dziękujemy za dokonanie konfiguracji produktu!",
             "images/przegrody/szpr_0_0.gif",
@@ -156,7 +156,20 @@ var myApp = (function () {
             windowNode,normalDoorNode,slidingDoorNode);
         //constructor for entire structure
         new panelsPlugin.PanelContainer(sawTreeParent,"#wrapperForPanels1");
+    };
+    var createFloatingListOfChoices=function(){
+        $("body").on("click",".panel-icon",function(){
+            $("<li>test111</li>")
+                .appendTo("#floatingListOfChoices ul");
+        });
         
+        $("<div id='floatingListOfChoices'><ul></ul></div>")
+            .appendTo("body");
+    };
+
+    public.init = function(){
+        createPanelsStructure();
+        createFloatingListOfChoices();
     };
 
     return public;
