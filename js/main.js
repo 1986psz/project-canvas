@@ -158,13 +158,22 @@ var myApp = (function () {
         new panelsPlugin.PanelContainer(sawTreeParent,"#wrapperForPanels1");
     };
     var createFloatingListOfChoices=function(){
-        $("body").on("click",".panel-icon",function(){
-            $("<li>test111</li>")
-                .appendTo("#floatingListOfChoices ul");
-        });
-        
         $("<div id='floatingListOfChoices'><ul></ul></div>")
             .appendTo("body");
+        
+        $("body").on("click",".panel-icon,.panel-title",function(){
+            $("#floatingListOfChoices ul li").remove();
+            
+            $(".panel").each(function(e){
+                $("<li>"+$(this).find(".panel-title").text()+"</li>")
+                    .appendTo("#floatingListOfChoices ul");
+            });
+            
+            /*$("<li>test111</li>")
+                .appendTo("#floatingListOfChoices ul");*/
+        });
+        
+        
     };
 
     public.init = function(){
