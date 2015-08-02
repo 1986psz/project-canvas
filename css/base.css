@@ -54,6 +54,7 @@ body {
   height: 100%; }
 
 div[id^="wrapperForPanels"] {
+  width: 70%;
   cursor: default;
   margin-top: 10px;
   overflow: hidden;

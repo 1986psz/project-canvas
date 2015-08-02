@@ -50,11 +50,11 @@ var myApp = (function () {
             "",
             sections_0_0,sections_0_1,sections_0_4,sections_1_0,sections_3_1,sections_4_0,sections_4_4);
         
-        var normalDoorWithoutGlass=new panelsPlugin.PanelChoicesNode("Bez szyb", "Szprosy",
+        var normalDoorWithoutGlass=new panelsPlugin.PanelCodeNode("Bez szyb",
+            "Dziękujemy za dokonanie konfiguracji produktu!",
              "images/drzwi-wejsciowe/szyby/wypelnienie_d_p.jpg",
-            "",
-            sections_0_0,sections_0_1,sections_0_4,sections_1_0,sections_3_1,sections_4_0,sections_4_4);
-        
+            "");
+
         var normalDoor1wingNode=new panelsPlugin.PanelChoicesNode("1 skrzydło", "Drzwi z szybami czy bez szyb",
              "images/drzwi-wejsciowe/skrzydla/ile_skrzydel_1.jpg",
             "",

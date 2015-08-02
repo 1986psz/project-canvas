@@ -13,6 +13,7 @@ body{
 }
 //#wrapperForPanels1,#wrapperForPanels2{  
 div[id^="wrapperForPanels"]{
+    width:70%;
     cursor:default;
     margin-top:10px;
     overflow:hidden;
