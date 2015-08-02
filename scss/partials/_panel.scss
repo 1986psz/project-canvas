@@ -1,0 +1,99 @@
+.panel-title{
+    color:black;
+    cursor:default;
+    position:relative;
+    background-color: white;
+    border-top:1px solid gray;
+    border-left:1px solid gray;
+    border-right:1px solid gray;
+    padding:10px;
+    @include border-top-left-radius(5px);
+    @include border-top-right-radius(5px);
+    .currentChoice{
+        color:black;
+        padding:1px;
+        background-color:white;
+        position:absolute;
+        text-align:center;
+        margin-left:10px;
+        padding-left:5px;
+        padding-right:5px;
+        @include border-radius(5px);
+    }
+}
+.panel-body{
+    padding:10px;
+    background-color: darkgray;
+    text-align: center;
+    @include border-bottom-left-radius(5px);
+    @include border-bottom-right-radius(5px);
+    border-bottom:1px solid gray;
+    border-left:1px solid gray;
+    border-right:1px solid gray;
+    .panel-icon{
+        cursor:pointer;
+        display:inline-block;
+        border:1px solid darkgray;
+        margin:5px;
+        text-align: center;
+        background-color: white;
+        height:300px;
+        max-width:300px;
+        overflow:hidden;
+        @include border-radius(5px);
+        &:hover{
+            .choiceDescription{
+                visibility:visible;
+            }
+        }
+        img{
+            max-width:100%;
+            max-height:70%;
+            margin:5px;
+            border:1px solid black;
+            @include border-radius(5px);
+        }
+        p{
+            .nextChoice{
+                background-color: white;
+                padding-left:5px;
+                padding-right:5px;
+                @include border-radius(5px);
+            }
+        }
+        .choiceDescription{
+            margin:5px;
+            color:darkslategray;
+            font-size:0.8em;
+        }
+    }
+    .panel-text{
+        background-color:white;
+        text-align: left;
+        line-height:1.5em;
+        padding:5px;
+    }
+}
+.active-title{
+    background-color:white;
+    cursor:default;
+}
+.nonactive-title{
+    color:white;
+    background-color:darkgray;
+    cursor:pointer;
+    &:hover{
+        background-color:lightgrey;
+        color:black;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .currentChoice{
+        left:40%;
+        margin-left:0;
+    }
+    .panel-body .panel-icon .choiceDescription{
+        visibility: hidden;
+        
+    }
+}
