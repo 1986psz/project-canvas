@@ -1,0 +1,19 @@
+#floatingListOfChoices{
+    padding:5px;
+    font-size:1em;;
+    background-color:cornsilk;
+    height:300px;
+    width:300px;
+    position:absolute;
+    bottom:0;
+    right:0;
+    line-height:1.2em;
+    .title{
+        font-weight:700;
+        display:block;
+    }
+    .value{
+        margin-left:15px;
+        display:block;
+    }
+}
