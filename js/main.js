@@ -1,6 +1,11 @@
 var myApp = (function () {	
     var public={};
-
+    jQuery.fn.onlyText= function() {
+        return $(this).clone().children().remove().end().text();
+    };
+    jQuery.fn.onlyChildrenText= function() {
+        return $(this).children().text();
+    };
     var createPanelsStructure=function(){
         var sections_0_0=new panelsPlugin.PanelCodeNode("Poziomo:0\nPionowo:0", 
             "Dziękujemy za dokonanie konfiguracji produktu!",
@@ -158,22 +163,20 @@ var myApp = (function () {
         new panelsPlugin.PanelContainer(sawTreeParent,"#wrapperForPanels1");
     };
     var createFloatingListOfChoices=function(){
-        $("<div id='floatingListOfChoices'><ul></ul></div>")
-            .appendTo("body");
-        
-        $("body").on("click",".panel-icon,.panel-title",function(){
+        $("<div id='floatingListOfChoices'><ul></ul></div>").appendTo("body");
+
+        $("#wrapperForPanels1").on("click",function(){
             $("#floatingListOfChoices ul li").remove();
-            
-            $(".panel").each(function(event){
-                $("<li>"+$(this).find(".panel-title").text()+"</li>")
-                    .appendTo("#floatingListOfChoices ul");
+            $(".panel").each(function(){
+                if($(this).find(".panel-title .currentChoice").length ){
+                    $("<li><span class='title'>"+
+                        $(this).find(".panel-title").onlyText()+"</span><span class='value'>"+
+                        $(this).find(".panel-title").onlyChildrenText()+"</span></li>")
+                        .appendTo("#floatingListOfChoices ul");
+                }
             });
-            
-            /*$("<li>test111</li>")
-                .appendTo("#floatingListOfChoices ul");*/
         });
-        
-        
+
     };
 
     public.init = function(){
@@ -185,7 +188,5 @@ var myApp = (function () {
 })();
 
 $(function() {
-
     myApp.init();
-
 });

@@ -170,12 +170,20 @@ div[id^="wrapperForPanels"] {
         margin: 0 !important; } }
 
 #floatingListOfChoices {
-  font-size: 14px;
+  padding: 5px;
+  font-size: 1em;
   background-color: cornsilk;
   height: 300px;
   width: 300px;
   position: absolute;
   bottom: 0;
-  right: 0; }
+  right: 0;
+  line-height: 1.2em; }
+  #floatingListOfChoices .title {
+    font-weight: 700;
+    display: block; }
+  #floatingListOfChoices .value {
+    margin-left: 15px;
+    display: block; }
 
 /*# sourceMappingURL=base.css.map */
