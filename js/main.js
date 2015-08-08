@@ -164,7 +164,7 @@ var myApp = (function () {
         $("body").on("click",".panel-icon,.panel-title",function(){
             $("#floatingListOfChoices ul li").remove();
             
-            $(".panel").each(function(e){
+            $(".panel").each(function(event){
                 $("<li>"+$(this).find(".panel-title").text()+"</li>")
                     .appendTo("#floatingListOfChoices ul");
             });

@@ -170,6 +170,7 @@ div[id^="wrapperForPanels"] {
         margin: 0 !important; } }
 
 #floatingListOfChoices {
+  font-size: 14px;
   background-color: cornsilk;
   height: 300px;
   width: 300px;
