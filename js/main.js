@@ -182,6 +182,7 @@ var myApp = (function () {
     public.init = function(){
         createPanelsStructure();
         createFloatingListOfChoices();
+        new productPreview.init();
     };
 
     return public;
