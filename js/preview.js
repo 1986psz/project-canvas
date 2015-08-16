@@ -270,8 +270,160 @@ var productPreview= (function () {
         drawDoorDetails();
     };
     var slidingDoorModule=function(){
+        var arrGlassArea=[];
+        var drawContour=function(){
+            myContext.beginPath();
+            myContext.rect(10, 10, 280, 280);
+            myContext.fillStyle = '#F8F8F8';
+            myContext.fill();
+            myContext.lineWidth = 1;
+            myContext.strokeStyle = 'black';
+            myContext.stroke();
+        };
+        var drawLeftGlass=function(){
+            myContext.beginPath();
+            myContext.rect(20,20, 125, 260);
+            myContext.fillStyle = '#9DC9F3';
+            myContext.fill();
+            myContext.lineWidth = 1;
+            myContext.strokeStyle = 'black';
+            myContext.stroke();
+            arrGlassArea.push(new MyArea(20,20, 125, 260));
+        };
+        var drawRightGlass=function(){
+            myContext.beginPath();
+            myContext.rect(155,20, 125, 260);
+            myContext.fillStyle = '#9DC9F3';
+            myContext.fill();
+            myContext.lineWidth = 1;
+            myContext.strokeStyle = 'black';
+            myContext.stroke();
+            arrGlassArea.push(new MyArea(155,20, 125, 260));
+        };
+        var drawLeftDoor=function(){
+            var drawLeftDoorContour=function(){
+                myContext.beginPath();
+                myContext.rect(20,20, 125, 260);
+                myContext.fillStyle = '#F8F8F8';
+                myContext.fill();
+                myContext.lineWidth = 1;
+                myContext.strokeStyle = 'black';
+                myContext.stroke();
+            };
+            var drawGlassInsideLeftDoor=function(){
+                myContext.beginPath();
+                myContext.rect(30,30, 105, 240);
+                myContext.fillStyle = '#9DC9F3';
+                myContext.fill();
+                myContext.lineWidth = 1;
+                myContext.strokeStyle = 'black';
+                myContext.stroke();
+                arrGlassArea.push(new MyArea(30,30, 105, 240));
+            };
+            var drawLeftHandle=function(){
+                myContext.beginPath();
+                myContext.rect(22,135, 6, 20);
+                myContext.fillStyle = 'black';
+                myContext.fill();
+            };
+            var drawArrowInsideLeftDoor=function(){
+                //main axis
+                myContext.beginPath();
+                myContext.moveTo(50, 150);
+                myContext.lineTo(115, 150);
+                myContext.lineWidth = 5;
+                myContext.strokeStyle = 'red';
+                myContext.stroke();
+                //top head
+                myContext.beginPath();
+                myContext.moveTo(82, 130);
+                myContext.lineTo(115, 151);
+                myContext.lineWidth = 5;
+                myContext.strokeStyle = 'red';
+                myContext.stroke();
+                //bottom head
+                myContext.beginPath();
+                myContext.moveTo(82, 170);
+                myContext.lineTo(115, 149);
+                myContext.lineWidth = 5;
+                myContext.strokeStyle = 'red';
+                myContext.stroke();
+            };
+
+            drawLeftDoorContour();
+            drawGlassInsideLeftDoor();
+            drawLeftHandle();
+            drawArrowInsideLeftDoor();
+        };
+        var drawRightDoor=function(){
+            var drawRightDoorContour=function(){
+                myContext.beginPath();
+                myContext.rect(155,20, 125, 260);
+                myContext.fillStyle = '#F8F8F8';
+                myContext.fill();
+                myContext.lineWidth = 1;
+                myContext.strokeStyle = 'black';
+                myContext.stroke();
+            };
+            var drawGlassInsideRightDoor=function(){
+                myContext.beginPath();
+                myContext.rect(165,30, 105, 240);
+                myContext.fillStyle = '#9DC9F3';
+                myContext.fill();
+                myContext.lineWidth = 1;
+                myContext.strokeStyle = 'black';
+                myContext.stroke();
+                arrGlassArea.push(new MyArea(165,30, 105, 240));
+            };
+            var drawRightHandle=function(){
+                myContext.beginPath();
+                myContext.rect(272,135, 6, 20);
+                myContext.fillStyle = 'black';
+                myContext.fill();
+            };
+            var drawArrowInsideRightDoor=function(){
+                //main axis
+                myContext.beginPath();
+                myContext.moveTo(185, 150);
+                myContext.lineTo(250, 150);
+                myContext.lineWidth = 5;
+                myContext.strokeStyle = 'red';
+                myContext.stroke();
+                //top head
+                myContext.beginPath();
+                myContext.moveTo(217, 130);
+                myContext.lineTo(185, 151);
+                myContext.lineWidth = 5;
+                myContext.strokeStyle = 'red';
+                myContext.stroke();
+                //bottom head
+                myContext.beginPath();
+                myContext.moveTo(217,170);
+                myContext.lineTo(185, 149);
+                myContext.lineWidth = 5;
+                myContext.strokeStyle = 'red';
+                myContext.stroke();
+            };
+
+            drawRightDoorContour();
+            drawGlassInsideRightDoor();
+            drawRightHandle();
+            drawArrowInsideRightDoor();
+        };
+        var drawEntireFrameLeftDoor=function(){
+            drawContour();
+            drawRightGlass();
+            drawLeftDoor();
+        };
+        var drawEntireFrameRightDoor=function(){
+            drawContour();
+            drawLeftGlass();
+            drawRightDoor();
+        };
+        
+        /////////////////////////////////////////////
         var drawSlidingDoorBase=function(){
-            console.log("sliding door base HERE");
+            drawEntireFrameLeftDoor();
         };
         var drawSlidingDoorDetails=function(){
             $("#floatingListOfChoices li").each(function(){
@@ -279,7 +431,13 @@ var productPreview= (function () {
                 var currentValue=$(this).find(".value").text();
 
                 if (currentTitle=="Kierunek przesuwania"){
-                    console.log("kierunek przesuwania to: "+currentValue);
+                    //console.log("kierunek przesuwania to: "+currentValue);
+                    if (currentValue=="Od lewej do prawej"){
+                        drawEntireFrameLeftDoor();
+                    }
+                    if (currentValue=="Od prawej do lewej"){
+                        drawEntireFrameRightDoor();
+                    }
                 }
                 if (currentTitle=="Szprosy"){
                     console.log("twoje szprosy: "+currentValue);
