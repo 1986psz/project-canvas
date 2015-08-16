@@ -45,35 +45,47 @@ var productPreview= (function () {
         
     };
     var doorModule=function(){
-        console.log("to sa drzwi");
-        $("#floatingListOfChoices li").each(function(){
-            var currentTitle=$(this).find(".title").text();
-            var currentValue=$(this).find(".value").text();
-            
-            if (currentTitle=="Ilość skrzydeł"){
-                console.log("twoja ilosc skrzydel to: "+currentValue);
-            }
-            if (currentTitle=="Drzwi z szybami czy bez szyb"){
-                console.log("twoj kierunek to: "+currentValue);
-            }
-            if (currentTitle=="Szprosy"){
-                console.log("twoje szprosy: "+currentValue);
-            }
-        });
+        var drawDoorBase=function(){
+            console.log("door base HERE");
+        };
+        var drawDoorDetails=function(){
+            $("#floatingListOfChoices li").each(function(){
+                var currentTitle=$(this).find(".title").text();
+                var currentValue=$(this).find(".value").text();
+
+                if (currentTitle=="Ilość skrzydeł"){
+                    console.log("twoja ilosc skrzydel to: "+currentValue);
+                }
+                if (currentTitle=="Drzwi z szybami czy bez szyb"){
+                    console.log("twoj kierunek to: "+currentValue);
+                }
+                if (currentTitle=="Szprosy"){
+                    console.log("twoje szprosy: "+currentValue);
+                }
+            });
+        };
+        drawDoorBase();
+        drawDoorDetails();
     };
     var slidingDoorModule=function(){
-        console.log("to sa drzwi przesuwne");
-        $("#floatingListOfChoices li").each(function(){
-            var currentTitle=$(this).find(".title").text();
-            var currentValue=$(this).find(".value").text();
-            
-            if (currentTitle=="Kierunek przesuwania"){
-                console.log("kierunek przesuwania to: "+currentValue);
-            }
-            if (currentTitle=="Szprosy"){
-                console.log("twoje szprosy: "+currentValue);
-            }
-        });
+        var drawSlidingDoorBase=function(){
+            console.log("sliding door base HERE");
+        };
+        var drawSlidingDoorDetails=function(){
+            $("#floatingListOfChoices li").each(function(){
+                var currentTitle=$(this).find(".title").text();
+                var currentValue=$(this).find(".value").text();
+
+                if (currentTitle=="Kierunek przesuwania"){
+                    console.log("kierunek przesuwania to: "+currentValue);
+                }
+                if (currentTitle=="Szprosy"){
+                    console.log("twoje szprosy: "+currentValue);
+                }
+            });
+        };
+        drawSlidingDoorBase();
+        drawSlidingDoorDetails();
     };
     
     pub.init=function(){
