@@ -25,6 +25,19 @@ var productPreview= (function () {
         myCanvas = document.getElementById("myCanvas");
         myContext = myCanvas.getContext("2d");
     };
+    var drawOneLine=function(start_x,start_y,end_x,end_y){
+            myContext.beginPath();
+            myContext.moveTo(start_x, start_y);
+            myContext.lineTo(end_x, end_y);
+            myContext.lineWidth = 1;
+            if (!(arguments[4] ===undefined)){
+                myContext.strokeStyle = arguments[4];
+            }
+            else{
+                myContext.strokeStyle = 'red';
+            };
+            myContext.stroke();
+        };
     
     var windowModule=function(){
         var arrOneLevelGlass=[];
@@ -115,6 +128,13 @@ var productPreview= (function () {
                 }
                 if (currentTitle=="Kierunek otwierania okna"){
                     console.log("twoj kierunek to: "+currentValue);
+                    for(var i=0;i<arrOneLevelGlass.length;i++){
+                        drawOneLine(arrOneLevelGlass[i].start_x,
+                                    arrOneLevelGlass[i].start_y,
+                                    arrOneLevelGlass[i].start_x+arrOneLevelGlass[i].areaWidth,
+                                    arrOneLevelGlass[i].start_y+arrOneLevelGlass[i].areaHeight,
+                                    "red");
+                    }
                 }
                 if (currentTitle=="Szprosy"){
                     console.log("twoje szprosy: "+currentValue);
