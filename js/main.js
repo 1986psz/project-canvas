@@ -115,17 +115,17 @@ var myApp = (function () {
         
         var windowDirections1wing_topLeft=new panelsPlugin.PanelChoicesNode("Opcja 1", "Szprosy",
              "images/okno/kierunki/otwieranie_pojedyncze_pg.jpg",
-            "Otwieranie w prawo oraz uchylanie",
+            "Skrzydło 1: otwieranie w prawo oraz uchylanie",
             sections_0_0,sections_0_1,sections_0_4,sections_1_0,sections_3_1,sections_4_0,sections_4_4);
         
         var windowDirections1wing_right=new panelsPlugin.PanelChoicesNode("Opcja 2", "Szprosy",
              "images/okno/kierunki/otwieranie_pojedyncze_l.jpg",
-            "Otwieranie w lewo",
+            "Skrzydło 1: otwieranie w lewo",
             sections_0_0,sections_0_1,sections_0_4,sections_1_0,sections_3_1,sections_4_0,sections_4_4);
         
         var windowDirections1wing_top=new panelsPlugin.PanelChoicesNode("Opcja 3", "Szprosy",
              "images/okno/kierunki/otwieranie_pojedyncze_g.jpg",
-            "Uchylanie",
+            "Skrzydło 1: uchylanie",
             sections_0_0,sections_0_1,sections_0_4,sections_1_0,sections_3_1,sections_4_0,sections_4_4);
         
         var window1wingNode=new panelsPlugin.PanelChoicesNode("1 skrzydło", "Kierunek otwierania okna",

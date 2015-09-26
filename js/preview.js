@@ -177,10 +177,6 @@ var productPreview= (function () {
                     }
                 }
                 if (currentTitle=="Kierunek otwierania okna"){
-                    console.log("twoj kierunek to: "+currentValue);
-                    /*for(var i=0;i<arrOneLevelGlass.length;i++){
-                        drawDirectionInsideArea(currentValue,arrOneLevelGlass[i]);
-                    }*/
                     arrOneLevelDirections=[];
                     arrOneLevelDirections=convertDirectionsStringToArray(currentValue);
                     for(var i=0;i<arrOneLevelDirections.length;i++){
