@@ -41,6 +41,7 @@ var productPreview= (function () {
     
     var windowModule=function(){
         var arrOneLevelGlass=[];
+        var arrOneLevelDirections=[];
         var drawContour=function(){
             myContext.beginPath();
             myContext.rect(10, 10, 280, 280);
@@ -100,8 +101,57 @@ var productPreview= (function () {
                 arrOneLevelGlass.push(new MyArea(204, 30, 65, 240));
             }
         };
-        
-        
+        var convertDirectionsStringToArray=function(myString){
+            var arrDirections=[];
+            if(myString.indexOf('Skrzydło 1:')>=0){
+                if(myString.indexOf('Skrzydło 2:')>=0){
+                    arrDirections.push(myString.substring(myString.indexOf('Skrzydło 1:')+12,myString.indexOf('Skrzydło 2:') ));
+                }
+                else{
+                    arrDirections.push(myString.substring(myString.indexOf('Skrzydło 1:')+12,myString.length ));
+                }
+            };
+            if(myString.indexOf('Skrzydło 2:')>=0){
+                if(myString.indexOf('Skrzydło 3:')>=0){
+                    arrDirections.push(myString.substring(myString.indexOf('Skrzydło 2:')+12,myString.indexOf('Skrzydło 3:') ));
+                }
+                else{
+                    arrDirections.push(myString.substring(myString.indexOf('Skrzydło 2:')+12,myString.length ));
+                }
+            };
+            if(myString.indexOf('Skrzydło 3:')>=0){
+                arrDirections.push(myString.substring(myString.indexOf('Skrzydło 3:')+12,myString.length ));
+            };
+            return arrDirections;
+        };
+        var drawDirectionInsideArea=function(myDirection,myArea){
+            var start_x=myArea.start_x;
+            var start_y=myArea.start_y;
+            var end_x=myArea.start_x+myArea.areaWidth;
+            var end_y=myArea.start_y+myArea.areaHeight;
+            var width=myArea.areaWidth;
+            var height=myArea.areaHeight;
+            var lineColor="blue";
+
+            if(myDirection.indexOf("w lewo")>=0){
+                drawOneLine(start_x,start_y,
+                    start_x+width,((height)/2)+start_y,lineColor);
+                drawOneLine(start_x,start_y+height,
+                    start_x+width,((height)/2)+start_y,lineColor);
+            };
+            if(myDirection.indexOf("w prawo")>=0){
+                drawOneLine(start_x,((height)/2)+start_y,
+                    end_x,start_y,lineColor);
+                drawOneLine(start_x,((height)/2)+start_y,
+                    end_x,end_y,lineColor);
+            };
+            if(myDirection.indexOf("uchylanie")>=0){
+                drawOneLine(start_x,end_y,
+                    ((width)/2)+start_x,start_y,lineColor);
+                drawOneLine(((width)/2)+start_x,start_y,
+                    end_x,end_y,lineColor);
+            };
+        };
         //////////////////////////////////////////////////////////
         var drawWindowBase=function(){
             drawOneLevel(1);
@@ -128,10 +178,14 @@ var productPreview= (function () {
                 }
                 if (currentTitle=="Kierunek otwierania okna"){
                     console.log("twoj kierunek to: "+currentValue);
-                    for(var i=0;i<arrOneLevelGlass.length;i++){
+                    /*for(var i=0;i<arrOneLevelGlass.length;i++){
                         drawDirectionInsideArea(currentValue,arrOneLevelGlass[i]);
-                    }
-                    
+                    }*/
+                    arrOneLevelDirections=[];
+                    arrOneLevelDirections=convertDirectionsStringToArray(currentValue);
+                    for(var i=0;i<arrOneLevelDirections.length;i++){
+                            drawDirectionInsideArea(arrOneLevelDirections[i],arrOneLevelGlass[i]);
+                    };
                 }
                 if (currentTitle=="Szprosy"){
                     console.log("twoje szprosy: "+currentValue);
