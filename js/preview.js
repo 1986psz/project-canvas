@@ -129,12 +129,9 @@ var productPreview= (function () {
                 if (currentTitle=="Kierunek otwierania okna"){
                     console.log("twoj kierunek to: "+currentValue);
                     for(var i=0;i<arrOneLevelGlass.length;i++){
-                        drawOneLine(arrOneLevelGlass[i].start_x,
-                                    arrOneLevelGlass[i].start_y,
-                                    arrOneLevelGlass[i].start_x+arrOneLevelGlass[i].areaWidth,
-                                    arrOneLevelGlass[i].start_y+arrOneLevelGlass[i].areaHeight,
-                                    "red");
+                        drawDirectionInsideArea(currentValue,arrOneLevelGlass[i]);
                     }
+                    
                 }
                 if (currentTitle=="Szprosy"){
                     console.log("twoje szprosy: "+currentValue);

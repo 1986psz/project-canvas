@@ -169,10 +169,24 @@ var myApp = (function () {
             $("#floatingListOfChoices ul li").remove();
             $(".panel").each(function(){
                 if($(this).find(".panel-title .currentChoice").length ){
-                    $("<li><span class='title'>"+
-                        $(this).find(".panel-title").onlyText()+"</span><span class='value'>"+
-                        $(this).find(".panel-title").onlyChildrenText()+"</span></li>")
-                        .appendTo("#floatingListOfChoices ul");
+                    if ( $(this).find(".panel-title").onlyText().indexOf('Kierunek otwierania okna')>=0 ){
+                        //copy choice hover text to floating list
+                        var currentChoice=$(this).find(".panel-title .currentChoice").text();
+                        var currentChoiceHoverText=$(this).find(".panel-title").next()
+                            .find(".nextChoice:contains("+currentChoice+")")
+                            .parent().next().html();
+                        $("<li><span class='title'>"+
+                            $(this).find(".panel-title").onlyText()+"</span><span class='value'>"+
+                            currentChoiceHoverText+"</span></li>")
+                            .appendTo("#floatingListOfChoices ul");
+                    }
+                    else{
+                        //copy choice to floating list
+                        $("<li><span class='title'>"+
+                            $(this).find(".panel-title").onlyText()+"</span><span class='value'>"+
+                            $(this).find(".panel-title").onlyChildrenText()+"</span></li>")
+                            .appendTo("#floatingListOfChoices ul");
+                    }
                 }
             });
         });
