@@ -155,18 +155,16 @@ var productPreview= (function () {
         var drawGridInsideArea=function(numHorizontalLines,numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight){
             var drawVerticalLinesInsideArea=function(numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight){
                 var onePart=parseInt(areaWidth/(numVerticalLines+1));
-                for(var i=onePart; i<=areaWidth-onePart;i++){
-                    if(i%onePart===0){
-                        drawOneLine(i+start_area_x,start_area_y,i+start_area_x,start_area_y+areaHeight);
-                    }
+                for(var i=onePart; i<=areaWidth-onePart;){
+                    drawOneLine(i+start_area_x,start_area_y,i+start_area_x,start_area_y+areaHeight);
+                    i=i+onePart;
                 };
             };
             var drawHorizontalLinesInsideArea=function(numHorizontalLines,start_area_x,start_area_y,areaWidth,areaHeight){
                 var onePart=parseInt(areaHeight/(numHorizontalLines+1));
-                for(var i=onePart; i<=areaHeight-onePart;i++){
-                    if(i%onePart===0){
-                        drawOneLine(start_area_x,start_area_y+i,start_area_x+areaWidth,start_area_y+i);
-                    }
+                for(var i=onePart; i<=areaHeight-onePart;){
+                    drawOneLine(start_area_x,start_area_y+i,start_area_x+areaWidth,start_area_y+i);
+                    i=i+onePart;
                 };
             };
             drawVerticalLinesInsideArea(numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight);
