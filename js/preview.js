@@ -601,18 +601,28 @@ var productPreview= (function () {
             $("#floatingListOfChoices li").each(function(){
                 var currentTitle=$(this).find(".title").text();
                 var currentValue=$(this).find(".value").text();
-
+                
                 if (currentTitle=="Kierunek przesuwania"){
                     //console.log("kierunek przesuwania to: "+currentValue);
                     if (currentValue=="Od lewej do prawej"){
+                        arrGlassArea=[];
                         drawEntireFrameLeftDoor();
                     }
                     if (currentValue=="Od prawej do lewej"){
+                        arrGlassArea=[];
                         drawEntireFrameRightDoor();
                     }
                 }
                 if (currentTitle=="Szprosy"){
-                    console.log("twoje szprosy: "+currentValue);
+                    //console.log("twoje szprosy: "+currentValue);
+                    var pattern = /[0-9]+/g;
+                    var matches = currentValue.match(pattern);
+                    var horizontalLines=parseInt(matches[0]);
+                    var verticalLines=parseInt(matches[1]);
+                    for(var i=0;i<arrGlassArea.length;i++){
+                        drawGridInsideArea(horizontalLines,verticalLines,arrGlassArea[i].start_x,arrGlassArea[i].start_y,
+                            arrGlassArea[i].areaWidth,arrGlassArea[i].areaHeight);
+                    };
                 }
             });
         };
