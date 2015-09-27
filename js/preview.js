@@ -425,12 +425,16 @@ var productPreview= (function () {
                         drawGlass(wingsNumberChoice);
                         drawRightHandleAndHinges(wingsNumberChoice);
                     }
-                    if(currentValue=="Bez szyb"){
-                        
-                    }
                 }
                 if (currentTitle=="Szprosy"){
-                    console.log("twoje szprosy: "+currentValue);
+                    var pattern = /[0-9]+/g;
+                    var matches = currentValue.match(pattern);
+                    var horizontalLines=parseInt(matches[0]);
+                    var verticalLines=parseInt(matches[1]);
+                    for(var i=0;i<arrGlassArea.length;i++){
+                        drawGridInsideArea(horizontalLines,verticalLines,arrGlassArea[i].start_x,arrGlassArea[i].start_y,
+                            arrGlassArea[i].areaWidth,arrGlassArea[i].areaHeight);
+                    };
                 }
             });
         };
