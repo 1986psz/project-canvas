@@ -26,18 +26,36 @@ var productPreview= (function () {
         myContext = myCanvas.getContext("2d");
     };
     var drawOneLine=function(start_x,start_y,end_x,end_y){
-            myContext.beginPath();
-            myContext.moveTo(start_x, start_y);
-            myContext.lineTo(end_x, end_y);
-            myContext.lineWidth = 1;
-            if (!(arguments[4] ===undefined)){
-                myContext.strokeStyle = arguments[4];
-            }
-            else{
-                myContext.strokeStyle = 'red';
-            };
-            myContext.stroke();
+        myContext.beginPath();
+        myContext.moveTo(start_x, start_y);
+        myContext.lineTo(end_x, end_y);
+        myContext.lineWidth = 1;
+        if (!(arguments[4] ===undefined)){
+            myContext.strokeStyle = arguments[4];
+        }
+        else{
+            myContext.strokeStyle = 'red';
         };
+        myContext.stroke();
+    };
+    var drawGridInsideArea=function(numHorizontalLines,numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight){
+        var drawVerticalLinesInsideArea=function(numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight){
+            var onePart=parseInt(areaWidth/(numVerticalLines+1));
+            for(var i=onePart; i<=areaWidth-onePart;){
+                drawOneLine(i+start_area_x,start_area_y,i+start_area_x,start_area_y+areaHeight);
+                i=i+onePart;
+            };
+        };
+        var drawHorizontalLinesInsideArea=function(numHorizontalLines,start_area_x,start_area_y,areaWidth,areaHeight){
+            var onePart=parseInt(areaHeight/(numHorizontalLines+1));
+            for(var i=onePart; i<=areaHeight-onePart;){
+                drawOneLine(start_area_x,start_area_y+i,start_area_x+areaWidth,start_area_y+i);
+                i=i+onePart;
+            };
+        };
+        drawVerticalLinesInsideArea(numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight);
+        drawHorizontalLinesInsideArea(numHorizontalLines,start_area_x,start_area_y,areaWidth,areaHeight);
+    };
     
     var windowModule=function(){
         var arrOneLevelGlass=[];
@@ -151,24 +169,6 @@ var productPreview= (function () {
                 drawOneLine(((width)/2)+start_x,start_y,
                     end_x,end_y,lineColor);
             };
-        };
-        var drawGridInsideArea=function(numHorizontalLines,numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight){
-            var drawVerticalLinesInsideArea=function(numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight){
-                var onePart=parseInt(areaWidth/(numVerticalLines+1));
-                for(var i=onePart; i<=areaWidth-onePart;){
-                    drawOneLine(i+start_area_x,start_area_y,i+start_area_x,start_area_y+areaHeight);
-                    i=i+onePart;
-                };
-            };
-            var drawHorizontalLinesInsideArea=function(numHorizontalLines,start_area_x,start_area_y,areaWidth,areaHeight){
-                var onePart=parseInt(areaHeight/(numHorizontalLines+1));
-                for(var i=onePart; i<=areaHeight-onePart;){
-                    drawOneLine(start_area_x,start_area_y+i,start_area_x+areaWidth,start_area_y+i);
-                    i=i+onePart;
-                };
-            };
-            drawVerticalLinesInsideArea(numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight);
-            drawHorizontalLinesInsideArea(numHorizontalLines,start_area_x,start_area_y,areaWidth,areaHeight);
         };
         //////////////////////////////////////////////////////////
         var drawWindowBase=function(){
