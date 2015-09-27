@@ -2,12 +2,13 @@
     padding:5px;
     font-size:1em;;
     background-color:cornsilk;
-    height:400px;
+    height:300px;
     width:300px;
-    position:absolute;
+    position:fixed;
     bottom:0;
     right:0;
     line-height:1.2em;
+    overflow:scroll;
     .title{
         font-weight:700;
         display:block;

@@ -11,23 +11,23 @@ var myApp = (function () {
             "Dziękujemy za dokonanie konfiguracji produktu!",
             "images/przegrody/szpr_0_0.gif",
             "");
-        var sections_0_1=new panelsPlugin.PanelCodeNode("Poziomo:0\nPionowo:1", 
+        var sections_0_1=new panelsPlugin.PanelCodeNode("Poziomo:1\nPionowo:0", 
             "Dziękujemy za dokonanie konfiguracji produktu!",
             "images/przegrody/szpr_0_1.gif",
             "");
-        var sections_0_4=new panelsPlugin.PanelCodeNode("Poziomo:0\nPionowo:4", 
+        var sections_0_4=new panelsPlugin.PanelCodeNode("Poziomo:4\nPionowo:0", 
             "Dziękujemy za dokonanie konfiguracji produktu!",
             "images/przegrody/szpr_0_4.gif",
             "");
-        var sections_1_0=new panelsPlugin.PanelCodeNode("Poziomo:1\nPionowo:0", 
+        var sections_1_0=new panelsPlugin.PanelCodeNode("Poziomo:0\nPionowo:1", 
             "Dziękujemy za dokonanie konfiguracji produktu!",
             "images/przegrody/szpr_1_0.gif",
             "");
-        var sections_3_1=new panelsPlugin.PanelCodeNode("Poziomo:3\nPionowo:1", 
+        var sections_3_1=new panelsPlugin.PanelCodeNode("Poziomo:1\nPionowo:3", 
             "Dziękujemy za dokonanie konfiguracji produktu!",
             "images/przegrody/szpr_3_1.gif",
             "");
-        var sections_4_0=new panelsPlugin.PanelCodeNode("Poziomo:4\nPionowo:0", 
+        var sections_4_0=new panelsPlugin.PanelCodeNode("Poziomo:0\nPionowo:4", 
             "Dziękujemy za dokonanie konfiguracji produktu!",
             "images/przegrody/szpr_4_0.gif",
             "");

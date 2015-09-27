@@ -152,6 +152,26 @@ var productPreview= (function () {
                     end_x,end_y,lineColor);
             };
         };
+        var drawGridInsideArea=function(numHorizontalLines,numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight){
+            var drawVerticalLinesInsideArea=function(numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight){
+                var onePart=parseInt(areaWidth/(numVerticalLines+1));
+                for(var i=onePart; i<=areaWidth-onePart;i++){
+                    if(i%onePart===0){
+                        drawOneLine(i+start_area_x,start_area_y,i+start_area_x,start_area_y+areaHeight);
+                    }
+                };
+            };
+            var drawHorizontalLinesInsideArea=function(numHorizontalLines,start_area_x,start_area_y,areaWidth,areaHeight){
+                var onePart=parseInt(areaHeight/(numHorizontalLines+1));
+                for(var i=onePart; i<=areaHeight-onePart;i++){
+                    if(i%onePart===0){
+                        drawOneLine(start_area_x,start_area_y+i,start_area_x+areaWidth,start_area_y+i);
+                    }
+                };
+            };
+            drawVerticalLinesInsideArea(numVerticalLines,start_area_x,start_area_y,areaWidth,areaHeight);
+            drawHorizontalLinesInsideArea(numHorizontalLines,start_area_x,start_area_y,areaWidth,areaHeight);
+        };
         //////////////////////////////////////////////////////////
         var drawWindowBase=function(){
             drawOneLevel(1);
@@ -162,7 +182,6 @@ var productPreview= (function () {
                 var currentValue=$(this).find(".value").text();
 
                 if (currentTitle=="Ilość skrzydeł"){
-                    //console.log("twoja ilosc skrzydel to: "+currentValue);
                     if(currentValue=="1 skrzydło"){
                         arrOneLevelGlass=[];
                         drawOneLevel(1);
@@ -184,7 +203,14 @@ var productPreview= (function () {
                     };
                 }
                 if (currentTitle=="Szprosy"){
-                    console.log("twoje szprosy: "+currentValue);
+                    var pattern = /[0-9]+/g;
+                    var matches = currentValue.match(pattern);
+                    var horizontalLines=parseInt(matches[0]);
+                    var verticalLines=parseInt(matches[1]);
+                    for(var i=0;i<arrOneLevelGlass.length;i++){
+                            drawGridInsideArea(horizontalLines,verticalLines,arrOneLevelGlass[i].start_x,arrOneLevelGlass[i].start_y,
+                                arrOneLevelGlass[i].areaWidth,arrOneLevelGlass[i].areaHeight);
+                    };
                 }
             });
         };
