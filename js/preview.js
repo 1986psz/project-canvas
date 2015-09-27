@@ -187,7 +187,6 @@ var productPreview= (function () {
             $("#floatingListOfChoices li").each(function(){
                 var currentTitle=$(this).find(".title").text();
                 var currentValue=$(this).find(".value").text();
-
                 if (currentTitle=="Ilość skrzydeł"){
                     if(currentValue=="1 skrzydło"){
                         arrOneLevelGlass=[];
@@ -404,7 +403,6 @@ var productPreview= (function () {
             $("#floatingListOfChoices li").each(function(){
                 var currentTitle=$(this).find(".title").text();
                 var currentValue=$(this).find(".value").text();
-
                 if (currentTitle=="Ilość skrzydeł"){
                     //console.log("twoja ilosc skrzydel to: "+currentValue);
                     if (currentValue=="1 skrzydło"){
@@ -592,7 +590,6 @@ var productPreview= (function () {
             drawLeftGlass();
             drawRightDoor();
         };
-        
         /////////////////////////////////////////////
         var drawSlidingDoorBase=function(){
             drawEntireFrameLeftDoor();
@@ -601,9 +598,7 @@ var productPreview= (function () {
             $("#floatingListOfChoices li").each(function(){
                 var currentTitle=$(this).find(".title").text();
                 var currentValue=$(this).find(".value").text();
-                
                 if (currentTitle=="Kierunek przesuwania"){
-                    //console.log("kierunek przesuwania to: "+currentValue);
                     if (currentValue=="Od lewej do prawej"){
                         arrGlassArea=[];
                         drawEntireFrameLeftDoor();
@@ -614,7 +609,6 @@ var productPreview= (function () {
                     }
                 }
                 if (currentTitle=="Szprosy"){
-                    //console.log("twoje szprosy: "+currentValue);
                     var pattern = /[0-9]+/g;
                     var matches = currentValue.match(pattern);
                     var horizontalLines=parseInt(matches[0]);
