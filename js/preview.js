@@ -81,7 +81,16 @@ var productPreview= (function () {
         var drawGlass=function(start_x,start_y,width,height){
             myContext.beginPath();
             myContext.rect(start_x, start_y, width, height);
-            myContext.fillStyle = '#9DC9F3';
+            //myContext.fillStyle = '#9DC9F3';
+            //gradient-start
+            var grd = myContext.createLinearGradient(42.000, 300.000, 258.000, 0.000);
+            // Add colors
+            grd.addColorStop(0.000, 'rgba(140, 191, 255, 1.000)');
+            grd.addColorStop(0.530, 'rgba(237, 240, 255, 1.000)');
+            grd.addColorStop(0.976, 'rgba(140, 191, 255, 1.000)');
+            // Fill with gradient
+            myContext.fillStyle = grd;
+            //gradient-end
             myContext.fill();
             myContext.lineWidth = 1;
             myContext.strokeStyle = 'black';
@@ -217,6 +226,8 @@ var productPreview= (function () {
         
     };
     var doorModule=function(){
+        var arrGlassArea=[];
+        var wingsNumberChoice=2;
         var drawContour=function(){
             myContext.beginPath();
             myContext.rect(10, 10, 280, 280);
@@ -325,6 +336,64 @@ var productPreview= (function () {
                 myContext.fill();
             }
         };
+        var drawGlass=function(wingsNumber){
+            if(wingsNumber==1){	
+                myContext.beginPath();
+                myContext.rect(105,40, 90, 190);
+                //gradient-start
+                var grd = myContext.createLinearGradient(42.000, 300.000, 258.000, 0.000);
+                // Add colors
+                grd.addColorStop(0.000, 'rgba(140, 191, 255, 1.000)');
+                grd.addColorStop(0.530, 'rgba(237, 240, 255, 1.000)');
+                grd.addColorStop(0.976, 'rgba(140, 191, 255, 1.000)');
+                // Fill with gradient
+                myContext.fillStyle = grd;
+                //gradient-end
+                myContext.fill();
+                myContext.lineWidth = 1;
+                myContext.strokeStyle = 'black';
+                myContext.stroke();	
+                arrGlassArea.push(new MyArea(105,40, 90, 190));
+            }
+            if(wingsNumber==2){
+                //left glass
+                myContext.beginPath();
+                myContext.rect(40,40, 90, 190);
+                //myContext.fillStyle = '#9DC9F3';
+                //gradient-start
+                var grd = myContext.createLinearGradient(42.000, 300.000, 258.000, 0.000);
+                // Add colors
+                grd.addColorStop(0.000, 'rgba(140, 191, 255, 1.000)');
+                grd.addColorStop(0.530, 'rgba(237, 240, 255, 1.000)');
+                grd.addColorStop(0.976, 'rgba(140, 191, 255, 1.000)');
+                // Fill with gradient
+                myContext.fillStyle = grd;
+                //gradient-end
+                myContext.fill();
+                myContext.lineWidth = 1;
+                myContext.strokeStyle = 'black';
+                myContext.stroke();
+                arrGlassArea.push(new MyArea(40,40, 90, 190));
+                //right glass
+                myContext.beginPath();
+                myContext.rect(170,40, 90, 190);
+                //myContext.fillStyle = '#9DC9F3';
+                //gradient-start
+                var grd = myContext.createLinearGradient(42.000, 300.000, 258.000, 0.000);
+                // Add colors
+                grd.addColorStop(0.000, 'rgba(140, 191, 255, 1.000)');
+                grd.addColorStop(0.530, 'rgba(237, 240, 255, 1.000)');
+                grd.addColorStop(0.976, 'rgba(140, 191, 255, 1.000)');
+                // Fill with gradient
+                myContext.fillStyle = grd;
+                //gradient-end
+                myContext.fill();
+                myContext.lineWidth = 1;
+                myContext.strokeStyle = 'black';
+                myContext.stroke();
+                arrGlassArea.push(new MyArea(170,40, 90, 190));
+            }
+        };
         /////////////////////////////////////////////////
         var drawDoorBase=function(){
             drawContour();
@@ -339,18 +408,26 @@ var productPreview= (function () {
                 if (currentTitle=="Ilość skrzydeł"){
                     //console.log("twoja ilosc skrzydel to: "+currentValue);
                     if (currentValue=="1 skrzydło"){
+                        wingsNumberChoice=1;
                         drawContour();
                         drawOneWing();
                         drawRightHandleAndHinges(1);
                     }
                     if (currentValue=="2 skrzydła"){
+                        wingsNumberChoice=2;
                         drawContour();
                         drawTwoWings();
                         drawRightHandleAndHinges(2);
                     }
                 }
                 if (currentTitle=="Drzwi z szybami czy bez szyb"){
-                    console.log("twoj kierunek to: "+currentValue);
+                    if(currentValue=="Szyby"){
+                        drawGlass(wingsNumberChoice);
+                        drawRightHandleAndHinges(wingsNumberChoice);
+                    }
+                    if(currentValue=="Bez szyb"){
+                        
+                    }
                 }
                 if (currentTitle=="Szprosy"){
                     console.log("twoje szprosy: "+currentValue);
