@@ -170,7 +170,7 @@ var myApp = (function () {
             $(".panel").each(function(){
                 if($(this).find(".panel-title .currentChoice").length ){
                     if ( $(this).find(".panel-title").onlyText().indexOf('Kierunek otwierania okna')>=0 ){
-                        //copy choice hover text to floating list
+                        //copy choice (hover text) to floating list
                         var currentChoice=$(this).find(".panel-title .currentChoice").text();
                         var currentChoiceHoverText=$(this).find(".panel-title").next()
                             .find(".nextChoice:contains("+currentChoice+")")
@@ -181,7 +181,7 @@ var myApp = (function () {
                             .appendTo("#floatingListOfChoices ul");
                     }
                     else{
-                        //copy choice to floating list
+                        //copy choice (choice title) to floating list
                         $("<li><span class='title'>"+
                             $(this).find(".panel-title").onlyText()+"</span><span class='value'>"+
                             $(this).find(".panel-title").onlyChildrenText()+"</span></li>")
